@@ -155,6 +155,44 @@ button {
     margin: 20px;
 }
 
+.checkout-products {
+    .product {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: center;
+        margin-bottom: 40px;
+
+        & img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        & p {
+            line-height: 20px;
+            max-width: 400px;
+        }
+
+        & button {
+            background-color: #D25535;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 275ms ease-in-out;
+
+            &:hover {
+                background-color: #884b1a;
+            }
+
+        }
+    }
+}
 
 hr {
     border-top: 1px solid #88581A;
