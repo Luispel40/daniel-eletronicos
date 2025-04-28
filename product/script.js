@@ -38,7 +38,7 @@ async function pushTableFromSheets(params) {
   const product = data.find((product) => product.index == id);
   const h3 = document.querySelector(".info h3");
   const span = document.querySelector("span");
-  span.innerText = product.offer && "R$ " + product.offer || ``;
+  span.innerHTML = `${product.offer ? `de ${product.value} por ${product.offer}` : product.value}`;
   h3.innerText = product.productName + " " + span.innerHTML;
 
   const p = document.querySelector("p");
