@@ -5,9 +5,58 @@ async function pushTableFromSheets(params) {
   const html = await response.text();
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
-  const elementoRitz = tempElement.querySelector(".ritz");
+  const table = tempElement.querySelector("tbody");
 
-  console.log(elementoRitz);
+  const rows = table.querySelectorAll("tr");
+  const data = [];
+
+  const headers = Array.from(rows[0].querySelectorAll("td")).map((td) =>
+    td.innerText.trim()
+  );
+
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    const cells = Array.from(row.querySelectorAll("td")).map((td) =>
+      td.innerText.trim()
+    );
+
+    const rowData = {};
+    headers.forEach((header, index) => {
+      rowData[header] = cells[index] || ""; // Se não tiver dado, coloca string vazia
+    });
+
+    data.push(rowData);
+  }
+
+  console.log(data);
+
+  const gridProducts = document.querySelector(".grid-products");
+  gridProducts.innerHTML = "";
+
+  data.forEach((product) => {
+    const productElement = document.createElement("div");
+    productElement.classList.add("product");
+
+    productElement.innerHTML = `
+      <img src="${product.image}" alt="" />
+      <div class="info"></div>
+        <h3>${product.productName} <span>${product.value}</span></h3>
+        <p>${product.description}</p>
+        <button>
+          <a href="./product/" class="button">saber mais</a>
+        </button>
+      </div>
+    `;
+
+    gridProducts.appendChild(productElement);
+  });
+
 }
 
-pushTableFromSheets();
+const addProducts = () => {
+  pushTableFromSheets();
+  
+};
+
+addProducts();
+
