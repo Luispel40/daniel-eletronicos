@@ -10,6 +10,9 @@ async function pushTableFromSheets(params) {
   const rows = table.querySelectorAll("tr");
   const data = [];
 
+  let postsCount = 0;
+  const postsLimit = 6;
+
   const headers = Array.from(rows[0].querySelectorAll("td")).map((td) =>
     td.innerText.trim()
   );
@@ -35,31 +38,38 @@ async function pushTableFromSheets(params) {
   const gridProducts = document.querySelector(".grid-products");
   gridProducts.innerHTML = "";
 
-  data.forEach((product) => {
+  data.forEach((product, index) => {
     const productElement = document.createElement("div");
     productElement.classList.add("product");
+
+    if (index >= postsLimit) {
+      productElement.style.display = "none";
+    }
 
     productElement.innerHTML = `
       <img src="${product.image}" alt="" id="${product.index}"/>
       <div class="info">
         <h3>${product.productName} 
-        ${product.offer ? `<span>de <s>${product.value}</s> por ${product.offer}</span>` : `<span> ${product.value}</span>`}</h3>
+        ${
+          product.offer
+            ? `<span>de <s>${product.value}</s> por ${product.offer}</span>`
+            : `<span> ${product.value}</span>`
+        }</h3>
         <p>${product.description}</p>
         <button>
-          <a href="../product/index.html?id=${product.index}" class="button">saber mais</a>
+          <a href="../product/index.html?id=${
+            product.index
+          }" class="button">saber mais</a>
         </button>
       </div>
     `;
 
     gridProducts.appendChild(productElement);
   });
-
 }
 
 const addProducts = () => {
   pushTableFromSheets();
-  
 };
 
 addProducts();
-
