@@ -25,6 +25,8 @@ async function pushTableFromSheets(params) {
       rowData[header] = cells[index] || ""; // Se não tiver dado, coloca string vazia
     });
 
+    rowData.index = i - 1;
+
     data.push(rowData);
   }
 
@@ -38,12 +40,13 @@ async function pushTableFromSheets(params) {
     productElement.classList.add("product");
 
     productElement.innerHTML = `
-      <img src="${product.image}" alt="" />
-      <div class="info"></div>
-        <h3>${product.productName} <span>${product.value}</span></h3>
+      <img src="${product.image}" alt="" id="${product.index}"/>
+      <div class="info">
+        <h3>${product.productName} 
+        ${product.offer ? `<span>de <s>${product.value}</s> por ${product.offer}</span>` : `<span> ${product.value}</span>`}</h3>
         <p>${product.description}</p>
         <button>
-          <a href="./product/" class="button">saber mais</a>
+          <a href="../product/index.html?id=${product.index}" class="button">saber mais</a>
         </button>
       </div>
     `;
