@@ -56,10 +56,10 @@ async function pushTableFromSheets(params) {
             : `<span> ${product.value}</span>`
         }</h3>
         <p>${product.description}</p>
-        <button>
+        <button >
           <a href="../product/index.html?id=${
             product.index
-          }" class="button">saber mais</a>
+          }" class="${product.avaliable ? "button" : "unvaliable"}">saber mais</a>
         </button>
       </div>
     `;
@@ -67,6 +67,23 @@ async function pushTableFromSheets(params) {
     gridProducts.appendChild(productElement);
   });
 }
+
+const openMoreProducts = () => {
+  const products = document.querySelectorAll(".product");
+  const seeMoreButton = document.querySelector(".see-more");
+
+  setTimeout(() => {
+    products.forEach((product, index) => {
+      if (product.style.display === "none") {
+        product.style.display = "flex";
+        seeMoreButton.innerText = "ver menos";
+      } else if (index >= 6 && product.style.display === "flex") {
+        product.style.display = "none";
+        seeMoreButton.innerText = "ver mais";
+      }
+    });
+  }, 300);
+};
 
 const addProducts = () => {
   pushTableFromSheets();

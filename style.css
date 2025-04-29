@@ -95,6 +95,7 @@ button {
             width: 100%;
             height: 300px;
             object-fit: cover;
+            mask-image: linear-gradient(to top, transparent, #000);
 
         }
 

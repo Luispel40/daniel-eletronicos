@@ -51,3 +51,12 @@ async function pushTableFromSheets(params) {
 }
 
 pushTableFromSheets();
+
+function sendToWhatsapp() {
+  const phone = "5519981723574"; // Seu número de WhatsApp com DDI + DDD
+  const currentUrl = window.location.href;
+  const message = `Eu gostei do ${document.querySelector(".info h3").innerText} ${currentUrl}%0AGostaria de saber mais sobre ele.`;
+
+  const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+  window.open(whatsappUrl, "_blank");
+}
