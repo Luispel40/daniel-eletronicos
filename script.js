@@ -1,3 +1,5 @@
+const data = [];
+
 async function pushTableFromSheets(params) {
   const response = await fetch(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-Ec4yQHAejSfAOK_Y6emKGU2kL7rB2q5iCOsdR-6MGZrThUUuxfYsNvoIwmdA4Mtx831qkJFhG7GT/pubhtml?gid=0&single=true"
@@ -8,7 +10,6 @@ async function pushTableFromSheets(params) {
   const table = tempElement.querySelector("tbody");
 
   const rows = table.querySelectorAll("tr");
-  const data = [];
 
   let postsCount = 0;
   const postsLimit = 6;
@@ -57,9 +58,9 @@ async function pushTableFromSheets(params) {
         }</h3>
         <p>${product.description}</p>
         <button >
-          <a href="../product/index.html?id=${
-            product.index
-          }" class="${product.avaliable ? "button" : "unvaliable"}">saber mais</a>
+          <a href="../product/index.html?id=${product.index}" class="${
+      product.avaliable ? "button" : "unvaliable"
+    }">saber mais</a>
         </button>
       </div>
     `;
@@ -85,8 +86,29 @@ const openMoreProducts = () => {
   }, 300);
 };
 
-const addProducts = () => {
-  pushTableFromSheets();
+const createCategories = (index) => {
+  const categories = document.querySelector(".carousel-categories");
+  const categoriesArray = [];
+
+  data.forEach((product) => {
+    if (!categoriesArray.includes(product.category)) {
+      categoriesArray.push(product.category);
+    }
+  });
+
+  console.log(categoriesArray);
+
+  categoriesArray.forEach((category) => {
+    const categoryElement = document.createElement("div");
+    categoryElement.classList.add("category");
+    categoryElement.innerText = category;
+    categories.appendChild(categoryElement);
+  });
+};
+
+const addProducts = async () => {
+  await pushTableFromSheets(); // espera os dados serem carregados
+  createCategories(); // só chama depois
 };
 
 addProducts();

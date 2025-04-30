@@ -21,6 +21,7 @@ a {
     max-width: 1024px;
     padding: 20px;
     margin: auto;
+    overflow: hidden;
 }
 
 .title {
@@ -204,6 +205,11 @@ button {
     margin: auto;
     justify-content: space-around;
     margin-top: 40px;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     & .category {
         color: #88581A;
