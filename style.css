@@ -102,15 +102,11 @@ button {
         }
 
         & .info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px;
-            position: relative;
-            top: -150px;
-            margin-bottom: -150px;
+            display: grid;
+            padding: 10px;
             background-image: linear-gradient(to bottom,
                     transparent, #fff);
+                    height: 150px;
 
             & h3 {
                 color: #D25535;
@@ -223,6 +219,11 @@ button {
         transition: 275ms ease-in-out;
 
         &:hover {
+            background-color: #88581A;
+            color: #fff;
+        }
+
+        &:active {
             background-color: #88581A;
             color: #fff;
         }

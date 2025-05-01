@@ -47,7 +47,11 @@ async function pushTableFromSheets(params) {
       productElement.style.display = "none";
     }
     productElement.id = product.index;
-    productElement.className += " " + product.category + " " + `${product.avaliable ? "" : "unavaliable"}`;
+    productElement.className +=
+      " " +
+      product.category +
+      " " +
+      `${product.avaliable ? "" : "unavaliable"}`;
 
     productElement.innerHTML = `
       <img src="${product.image}" alt="" id="${product.index}"/>
@@ -61,7 +65,7 @@ async function pushTableFromSheets(params) {
         <p>${product.description}</p>
         <button >
           <a href="../product/index.html?id=${product.index}" class="button
-    }">comprar</a>
+    }">${product.avaliable ? "Ver Mais" : "Em Breve"}</a>
         </button>
       </div>
     `;
@@ -87,7 +91,7 @@ const openMoreProducts = () => {
   }, 300);
 };
 
-const createCategories = (index) => {
+const createCategories = () => {
   const categories = document.querySelector(".carousel-categories");
   const categoriesArray = [];
 
@@ -96,8 +100,6 @@ const createCategories = (index) => {
       categoriesArray.push(product.category);
     }
   });
-
-  console.log(categoriesArray);
 
   categoriesArray.forEach((category) => {
     const categoryElement = document.createElement("a");
@@ -108,20 +110,30 @@ const createCategories = (index) => {
   });
 };
 
-const filterProducts = (category) => {
+const filterProducts = () => {
+  const category = window.location.search.split("=")[1];
   const products = document.querySelectorAll(".product");
+
   products.forEach((product) => {
-    if (!product.innerText.includes(category)) {
-      product.style.display = "none";
-    } else {
+    if (product.classList.contains(category) || !category) {
       product.style.display = "flex";
+      document.querySelector(".see-more").style.display = "none";
+      document.querySelector(".title").innerText = `${category || "Todos os produtos"}`;
+    } else {
+      product.style.display = "none";
     }
   });
 };
 
+const categoriesButtons = document.querySelectorAll(".category");
+categoriesButtons.forEach((categoryButton) => {
+  categoryButton.addEventListener("click", filterProducts);
+});
+
 const addProducts = async () => {
-  await pushTableFromSheets(); // espera os dados serem carregados
-  createCategories(); // só chama depois
+  await pushTableFromSheets();
+  createCategories();
+  filterProducts();
 };
 
 addProducts();
