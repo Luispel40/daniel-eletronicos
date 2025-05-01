@@ -99,9 +99,10 @@ const createCategories = (index) => {
   console.log(categoriesArray);
 
   categoriesArray.forEach((category) => {
-    const categoryElement = document.createElement("div");
+    const categoryElement = document.createElement("a");
     categoryElement.classList.add("category");
     categoryElement.innerText = category;
+    categoryElement.href = "../products/index.html?category=" + category;
     categories.appendChild(categoryElement);
   });
 };
