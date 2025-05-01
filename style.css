@@ -80,7 +80,8 @@ button {
 
 .grid-products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    ;
     gap: 20px;
 
     & .product {
@@ -224,6 +225,27 @@ button {
         &:hover {
             background-color: #88581A;
             color: #fff;
+        }
+    }
+}
+
+.unavaliable {
+
+   
+
+    & * {
+        pointer-events: none;
+    }
+    & img {
+        filter: grayscale(1);
+    }
+
+    & button {
+        background-color: #808080;
+        cursor: not-allowed;
+
+        & a {
+            pointer-events: none;
         }
     }
 }

@@ -46,6 +46,8 @@ async function pushTableFromSheets(params) {
     if (index >= postsLimit) {
       productElement.style.display = "none";
     }
+    productElement.id = product.index;
+    productElement.className += " " + product.category + " " + `${product.avaliable ? "" : "unavaliable"}`;
 
     productElement.innerHTML = `
       <img src="${product.image}" alt="" id="${product.index}"/>
@@ -104,6 +106,17 @@ const createCategories = (index) => {
     categoryElement.innerText = category;
     categoryElement.href = "../products/index.html?category=" + category;
     categories.appendChild(categoryElement);
+  });
+};
+
+const filterProducts = (category) => {
+  const products = document.querySelectorAll(".product");
+  products.forEach((product) => {
+    if (!product.innerText.includes(category)) {
+      product.style.display = "none";
+    } else {
+      product.style.display = "flex";
+    }
   });
 };
 
