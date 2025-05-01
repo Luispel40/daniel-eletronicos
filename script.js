@@ -113,18 +113,32 @@ const createCategories = () => {
 const filterProducts = () => {
   const category = window.location.search.split("=")[1];
   const products = document.querySelectorAll(".product");
+  const buttonCategories = document.querySelectorAll(".category");
 
   if (window.location.search.includes("category")) {
     products.forEach((product) => {
       if (product.classList.contains(category) || !category) {
         product.style.display = "flex";
         document.querySelector(".see-more").style.display = "none";
-        document.querySelector(".title").innerText = `${category || "Todos os produtos"}`;
+        document.querySelector(".title").innerText = `${
+          category || "Todos os produtos"
+        }`;
       } else {
         product.style.display = "none";
       }
     });
   }
+
+  buttonCategories.forEach((buttonCategory) => {
+    if (buttonCategory.innerText === category) {
+      buttonCategory.classList.add("active");
+    } else if (!window.location.search.includes("category")) {
+      buttonCategory.firstChild.classList.add("active");
+    } else {
+      buttonCategory.classList.remove("active");
+    }
+  });
+
 };
 
 const categoriesButtons = document.querySelectorAll(".category");

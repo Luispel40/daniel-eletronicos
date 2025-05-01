@@ -218,6 +218,8 @@ button {
         cursor: pointer;
         transition: 275ms ease-in-out;
 
+        
+
         &:hover {
             background-color: #88581A;
             color: #fff;
@@ -227,6 +229,11 @@ button {
             background-color: #88581A;
             color: #fff;
         }
+    }
+
+    & .active {
+        background-color: #88581A;
+        color: #fff;
     }
 }
 
