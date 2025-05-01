@@ -60,9 +60,8 @@ async function pushTableFromSheets(params) {
         }</h3>
         <p>${product.description}</p>
         <button >
-          <a href="../product/index.html?id=${product.index}" class="${
-      product.avaliable ? "button" : "unvaliable"
-    }">saber mais</a>
+          <a href="../product/index.html?id=${product.index}" class="button
+    }">comprar</a>
         </button>
       </div>
     `;
