@@ -105,40 +105,34 @@ const createCategories = () => {
     const categoryElement = document.createElement("a");
     categoryElement.classList.add("category");
     categoryElement.innerText = category;
-    categoryElement.href = "../products/index.html?category=" + category;
     categories.appendChild(categoryElement);
   });
 };
 
 const filterProducts = () => {
-  const category = window.location.search.split("=")[1];
   const products = document.querySelectorAll(".product");
   const buttonCategories = document.querySelectorAll(".category");
 
-  if (window.location.search.includes("category")) {
-    products.forEach((product) => {
-      if (product.classList.contains(category) || !category) {
-        product.style.display = "flex";
-        document.querySelector(".see-more").style.display = "none";
-        document.querySelector(".title").innerText = `${
-          category || "Todos os produtos"
-        }`;
-      } else {
-        product.style.display = "none";
-      }
-    });
-  }
+  let setThisCategory = "";
 
-  buttonCategories.forEach((buttonCategory) => {
-    if (buttonCategory.innerText === category) {
-      buttonCategory.classList.add("active");
-    } else if (!window.location.search.includes("category")) {
-      buttonCategory.firstChild.classList.add("active");
-    } else {
-      buttonCategory.classList.remove("active");
-    }
-  });
+  buttonCategories.forEach((thisCategory) => {
+    thisCategory.addEventListener("click", () => {
+      setThisCategory = thisCategory.innerText;
+      products.forEach((product) => {
+        if (product.classList.contains(setThisCategory)) {
+          product.style.display = "flex";
+        } else {
+          product.style.display = "none";
+        }
 
+        if (setThisCategory === thisCategory.innerText) {
+          document.querySelector(".active").classList.remove("active");
+          thisCategory.classList.add("active");
+          document.querySelector(".see-more").innerText = "ver todos os produtos";
+        }
+      });
+    })
+  })
 };
 
 const categoriesButtons = document.querySelectorAll(".category");
