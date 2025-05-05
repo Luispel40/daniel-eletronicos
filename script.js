@@ -129,6 +129,7 @@ const filterProducts = () => {
           document.querySelector(".active").classList.remove("active");
           thisCategory.classList.add("active");
           document.querySelector(".see-more").innerText = "ver todos os produtos";
+          document.querySelector("h3").innerText = setThisCategory;
         }
       });
     })
