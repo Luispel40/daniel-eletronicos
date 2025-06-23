@@ -2,14 +2,14 @@ const data = [];
 
 async function pushTableFromSheets(params) {
   const response = await fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-Ec4yQHAejSfAOK_Y6emKGU2kL7rB2q5iCOsdR-6MGZrThUUuxfYsNvoIwmdA4Mtx831qkJFhG7GT/pubhtml?gid=0&single=true"
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi5zr7ghSpQbiwx1QWPmgPHl6_wZvmxmzATwXUIu3n5bkJJ3FZMA6gw-TscGjdiamFE30pk3kWS92l/pubhtml"
   );
   const html = await response.text();
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
   const table = tempElement.querySelector("tbody");
 
-  const rows = table.querySelectorAll("tr");
+  const rows = table.querySelectorAll("tr"); 
 
   let postsCount = 0;
   const postsLimit = 6;
@@ -36,8 +36,10 @@ async function pushTableFromSheets(params) {
 
   console.log(data);
 
-  const gridProducts = document.querySelector(".grid-products");
-  gridProducts.innerHTML = "";
+  sessionStorage.setItem("data", JSON.stringify(data));
+
+  const gridProducts1 = document.querySelector("#grid-products-1");
+  gridProducts1.innerHTML = "";
 
   data.forEach((product, index) => {
     const productElement = document.createElement("div");
@@ -49,7 +51,7 @@ async function pushTableFromSheets(params) {
     productElement.id = product.index;
     productElement.className +=
       " " +
-      product.category +
+      product.category.toLowerCase().split(" ").join("") +
       " " +
       `${product.avaliable ? "" : "unavaliable"}`;
 
@@ -70,7 +72,7 @@ async function pushTableFromSheets(params) {
       </div>
     `;
 
-    gridProducts.appendChild(productElement);
+    gridProducts1.appendChild(productElement);
   });
 }
 
@@ -98,6 +100,7 @@ const createCategories = () => {
   data.forEach((product) => {
     if (!categoriesArray.includes(product.category)) {
       categoriesArray.push(product.category);
+      categoriesArray.sort();
     }
   });
 
@@ -119,7 +122,7 @@ const filterProducts = () => {
     thisCategory.addEventListener("click", () => {
       setThisCategory = thisCategory.innerText;
       products.forEach((product) => {
-        if (product.classList.contains(setThisCategory)) {
+        if (product.classList.contains(setThisCategory.toLowerCase().split(" ").join(""))) {
           product.style.display = "flex";
         } else {
           product.style.display = "none";

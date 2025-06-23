@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --sky: #03a8e8;
+    --dark-blue: #034871;
+    --dark-grey: #333333;
+    --light-grey: #999999;
+}
+
 body {
     font-family: sans-serif;
     font-size: 14px;
@@ -19,28 +30,29 @@ a {
     justify-content: center;
     flex-direction: column;
     max-width: 1024px;
-    padding: 20px;
+    padding: 20px 0;
     margin: auto;
     overflow: hidden;
 }
 
 .title {
-    color: #88581A;
+    color: var(--dark-blue);
     text-align: center;
     text-transform: uppercase;
 }
 
 button {
-    background-color: #D25535;
-    color: #fff;
+    background-image: linear-gradient(to top, var(--dark-blue) 40%, var(--sky) 99%);
+    color: var(--dark-blue);
     border: none;
     padding: 10px;
     border-radius: 3px;
     cursor: pointer;
     transition: 275ms ease-in-out;
+    background-size: 200% 200%;
 
     &:hover {
-        background-color: #884b1a;
+        background-position: 100%;
     }
 }
 
@@ -61,9 +73,9 @@ button {
 
         & a {
             text-transform: uppercase;
-            color: #88581A;
+            color: var(--dark-blue);
             background-image:
-                linear-gradient(to right, #88581A 50%, transparent 50%);
+                linear-gradient(to right, var(--dark-blue) 50%, transparent 50%);
             background-size: 300%;
             background-position: 100%;
             transition: 275ms ease-in-out;
@@ -109,11 +121,11 @@ button {
                     height: 150px;
 
             & h3 {
-                color: #D25535;
+                color: var(--dark-blue);
             }
 
             & p {
-                color: #88581A;
+                color: var(--dark-grey);
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -155,7 +167,7 @@ button {
 }
 
 .checkout-products {
-    .product {
+    & .product {
         display: flex;
         flex-direction: row;
         gap: 20px;
@@ -177,7 +189,7 @@ button {
         }
 
         & button {
-            background-color: #D25535;
+            background-color: var(--dark-blue);
             color: #fff;
             border: none;
             padding: 10px;
@@ -185,9 +197,6 @@ button {
             cursor: pointer;
             transition: 275ms ease-in-out;
 
-            &:hover {
-                background-color: #884b1a;
-            }
 
         }
     }
@@ -202,64 +211,58 @@ button {
     margin: auto;
     justify-content: space-around;
     margin-top: 40px;
-    overflow-x: scroll;
+    overflow: auto;
 
     &::-webkit-scrollbar {
         display: none;
     }
 
     & .category {
-        color: #88581A;
+        color: var(--dark-blue);
         text-decoration: none;
         padding: 10px 20px;
-        margin: 5px;
-        border: 1px solid #88581A;
+        margin: 0 0 0 5px;
+        border: 1px solid var(--dark-blue);
         border-radius: 3px;
         cursor: pointer;
         transition: 275ms ease-in-out;
+        flex: 1 0 auto;
 
         
 
         &:hover {
-            background-color: #88581A;
-            color: #fff;
-        }
-
-        &:active {
-            background-color: #88581A;
+            background-color: var(--dark-blue);
             color: #fff;
         }
     }
 
     & .active {
-        background-color: #88581A;
+        background-color: var(--dark-blue);
         color: #fff;
     }
 }
 
 .unavaliable {
 
-   
+   filter: grayscale(1);
 
     & * {
         pointer-events: none;
     }
-    & img {
-        filter: grayscale(1);
-    }
 
     & button {
-        background-color: #808080;
-        cursor: not-allowed;
-
-        & a {
-            pointer-events: none;
-        }
+        background-color: var(--light-grey) !important;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 275ms ease-in-out;
     }
 }
 
 hr {
-    border-top: 1px solid #88581A;
+    border-top: 1px solid var(--dark-grey);
 }
 
 [this] {

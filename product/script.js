@@ -1,6 +1,6 @@
 async function pushTableFromSheets(params) {
   const response = await fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-Ec4yQHAejSfAOK_Y6emKGU2kL7rB2q5iCOsdR-6MGZrThUUuxfYsNvoIwmdA4Mtx831qkJFhG7GT/pubhtml?gid=0&single=true"
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi5zr7ghSpQbiwx1QWPmgPHl6_wZvmxmzATwXUIu3n5bkJJ3FZMA6gw-TscGjdiamFE30pk3kWS92l/pubhtml"
   );
   const html = await response.text();
   const tempElement = document.createElement("div");
@@ -53,7 +53,7 @@ async function pushTableFromSheets(params) {
 pushTableFromSheets();
 
 function sendToWhatsapp() {
-  const phone = "5519981723574"; // Seu número de WhatsApp com DDI + DDD
+  const phone = "5517974002228";
   const currentUrl = window.location.href;
   const message = `Eu gostei do ${document.querySelector(".info h3").innerText} ${currentUrl}%0AGostaria de saber mais sobre ele.`;
 

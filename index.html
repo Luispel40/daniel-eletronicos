@@ -1,83 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loja Elisa Lemos</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="menu section">
-      <div class="menu-items">
-        <a href="#">
-          <img class="logo" src="./img/Logo.webp" alt="" />
-        </a>
-        <div class="links">
-          <a href="#">Início</a>
-          <a href="./products/">Produtos</a>
-          <a href="./about/">Sobre Nós</a>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja Daniel Eletronicos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="menu section">
+    <div class="menu-items">
+      <a href="#">
+        <img class="logo" src="./img/Logo.webp" alt="" />
+      </a>
+      <div class="links">
+        <a href="#">Início</a>
+        <a href="./products/">Produtos</a>
+        <a href="./about/">Sobre Nós</a>
       </div>
     </div>
+  </div>
 
-    <div class="banner section">
-      <img src="./img/capa 01.webp" alt="" />
-    </div>
+  <div class="banner section">
+    <img src="./img/capa 01.webp" alt="" />
+  </div>
+
+  <div class="section">
+    <hr />
+    <br /><br />
+    <center>
+      <h3 class="title">Principais produtos</h3>
+    </center>
+  </div>
+
+  <div class="section grid-products" id="grid-products-1"></div>
+
+  <div class="section">
+    <button class="see-more" onclick="window.location.href = '/products/'">
+      Ir para a pagina de produtos
+    </button>
+  </div>
+
+  <div class="banner section">
+    <hr />
+    <br /><br />
+    <img src="./img/capa 02 .webp" alt="" />
 
     <div class="section">
       <hr />
       <br /><br />
-      <center><h3 class="title">Principais produtos</h3></center>
+      <center>
+        <h3 class="title">Principais produtos</h3>
+      </center>
     </div>
 
-    <div class="section grid-products"></div>
+    <div class="section grid-products carousel" id="grid-products-2">
+      
+    </div>
 
     <div class="section">
       <button class="see-more" onclick="window.location.href = '/products/'">
         Ir para a pagina de produtos
       </button>
     </div>
+  </div>
 
-    <div class="banner section">
-      <hr />
-      <br /><br />
-      <img src="./img/capa 02 .webp" alt="" />
+  <div class="section">
+    <div class="bio">
+      <img src="./img/Daniel Nunes bio.webp" alt="" />
+      <p>
+        Empreendedor individual, casado e pai de família, Daniel Oliveira é o fundador e responsável pela nossa loja de
+        eletrônicos em São José do Rio Preto.
+        <br><br>
+        Com dedicação, compromisso e atendimento de qualidade, ele trabalha todos
+        os dias para oferecer os melhores produtos e soluções tecnológicas para seus clientes. Seu objetivo é unir
+        confiança, bom preço e praticidade em cada venda realizada.
+      </p>
     </div>
 
-    <div class="section">
-      <div class="bio">
-        <img src="./img/Elisa Lemos bio copiar.webp" alt="" />
-        <p>
-          Sou autora, escritora e empreendedora. Escrevi os livros "Uma Mulher
-          Só" e "A Chave do Sucesso", obras que refletem minha trajetória,
-          desafios e aprendizados na vida e nos negócios.
-          <br /><br />
-          À frente da minha própria loja, cuido de tudo com dedicação e amor —
-          do atendimento à gestão, da criação à entrega. Faço tudo sozinha, com
-          coragem, resiliência e paixão pelo que faço. <br /><br />
-          Minha missão é inspirar outras mulheres a acreditarem no próprio
-          potencial e mostrarem que é possível conquistar seus sonhos com
-          autenticidade, força e empreendedorismo.
-        </p>
-      </div>
+    <button class="button"
+      onclick="window.location.href = 'https://wa.me/5517974002228?text=Ol%C3%A1%20Daniel,%20gostaria%20de%20conversar%20com%20voc%C3%AA%20sobre%20os%20seus%20produtos%20e%20servi%C3%A7os'">
+      conversar com o vendedor
+    </button>
+  </div>
 
-      <button
-        class="button"  
-        onclick="window.location.href = 'https://wa.me/5519981723574'"
-      >
-        conversar com o vendedor
-      </button>
-    </div>
+  <div class="section">
+    <hr />
+    <br /><br />
+    <center>
+      <footer>&copy; Loja D Eletronicos | Todos os direitos reservados</footer>
+    </center>
+    <br />
+  </div>
 
-    <div class="section">
-      <hr />
-      <br /><br />
-      <center>
-        <footer>&copy; Loja Elisa Lemos | Todos os direitos reservados</footer>
-      </center>
-      <br />
-    </div>
+  <script src="./script.js"></script>
+  <script src="carousel.js"></script>
+</body>
 
-    <script src="./script.js"></script>
-  </body>
 </html>
