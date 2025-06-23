@@ -103,13 +103,12 @@ button {
         border-radius: 10px;
         overflow: hidden;
         border: 3px solid #fff;
-        box-shadow: 5px 5px 5px #0002;
+        box-shadow: 0px 0px 15px #0006;
 
         & img {
             width: 100%;
             height: 300px;
             object-fit: cover;
-            mask-image: linear-gradient(to top, transparent, #000);
 
         }
 
@@ -118,7 +117,7 @@ button {
             padding: 10px;
             background-image: linear-gradient(to bottom,
                     transparent, #fff);
-                    height: 150px;
+            height: 150px;
 
             & h3 {
                 color: var(--dark-blue);
@@ -228,7 +227,7 @@ button {
         transition: 275ms ease-in-out;
         flex: 1 0 auto;
 
-        
+
 
         &:hover {
             background-color: var(--dark-blue);
@@ -242,9 +241,120 @@ button {
     }
 }
 
+.carousel {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: auto;
+    justify-content: space-around;
+    margin-top: 40px;
+    overflow: auto;
+    width: 100%;
+
+    & .controls {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        z-index: 999;
+        width: min(100%, 1080px);
+        justify-content: space-between;
+        padding: 10px 20px;
+
+        & button {
+            background-color: var(--dark-blue);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            aspect-ratio: 1 / 1 !important;
+            width: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 275ms ease-in-out;
+            box-shadow: 5px 5px 5px #0006,
+                -3px -3px 10px #fff6,
+                inset 3px 5px 4px #fff6,
+                inset -3px -3px 10px #0006;
+
+                &.prev {
+                   opacity: 0;
+                   pointer-events: none;
+                }   
+        }
+    }
+
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    & .product {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 3px solid #fff;
+        box-shadow: 0px 0px 15px #0006;
+        width: min(300px, 100%);
+        flex: 1 0 auto;
+        transition: .5s ease-in-out;
+
+        & img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        & .info {
+            display: grid;
+            grid-template-rows: 1fr 1fr 2fr;
+            gap: 10px;
+            padding: 10px;
+            background-image: linear-gradient(to bottom,
+                    transparent, #fff);
+            height: 150px;
+
+            & .title {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            & p {
+                color: var(--dark-grey);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+            }
+
+            & button {
+                background-color: var(--dark-blue);
+                color: #fff;
+                border: none;
+                padding: 10px;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: 275ms ease-in-out;
+                display: flex;
+                flex: 1 0 auto;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 60px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            
+        }
+    }
+
+}
+
 .unavaliable {
 
-   filter: grayscale(1);
+    filter: grayscale(1);
 
     & * {
         pointer-events: none;

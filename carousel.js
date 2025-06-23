@@ -6,10 +6,6 @@ const carousel = document.getElementById("grid-products-2");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 
-console.log(aData);
-
-carousel.innerHTML = "";
-
 let currentSlide = 0;
 
 const createProductsFromCarousel = () => {
@@ -33,6 +29,34 @@ const createProductsFromCarousel = () => {
             </div>
         `;
     carousel.innerHTML += productElement.outerHTML;
+  });
+};
+
+const nextSlide = () => {
+  const products = document.querySelectorAll(".carousel .product");
+  products.forEach((product) => {
+    firstProduct = products[0];
+    firstProduct.style.width = "0px";
+    document.querySelector(".prev").style.opacity = "1";
+    document.querySelector(".prev").style.pointerEvents = "all";
+    setTimeout(() => {
+      firstProduct.remove();
+      carousel.appendChild(firstProduct);
+      firstProduct.style.width = "300px";
+    }, 400);
+  });
+};
+
+const prevSlide = () => {
+  const products = document.querySelectorAll(".carousel .product");
+  products.forEach((product) => {
+    lastProduct = products[products.length - 1];
+    lastProduct.style.width = "0px";
+    lastProduct.remove();
+    carousel.prepend(lastProduct);
+    setTimeout(() => {
+      lastProduct.style.width = "300px";
+    }, 10);
   });
 };
 

@@ -9,7 +9,7 @@ async function pushTableFromSheets(params) {
   tempElement.innerHTML = html;
   const table = tempElement.querySelector("tbody");
 
-  const rows = table.querySelectorAll("tr"); 
+  const rows = table.querySelectorAll("tr");
 
   let postsCount = 0;
   const postsLimit = 6;
@@ -122,7 +122,11 @@ const filterProducts = () => {
     thisCategory.addEventListener("click", () => {
       setThisCategory = thisCategory.innerText;
       products.forEach((product) => {
-        if (product.classList.contains(setThisCategory.toLowerCase().split(" ").join(""))) {
+        if (
+          product.classList.contains(
+            setThisCategory.toLowerCase().split(" ").join("")
+          )
+        ) {
           product.style.display = "flex";
         } else {
           product.style.display = "none";
@@ -131,12 +135,13 @@ const filterProducts = () => {
         if (setThisCategory === thisCategory.innerText) {
           document.querySelector(".active").classList.remove("active");
           thisCategory.classList.add("active");
-          document.querySelector(".see-more").innerText = "ver todos os produtos";
+          document.querySelector(".see-more").innerText =
+            "ver todos os produtos";
           document.querySelector("h3").innerText = setThisCategory;
         }
       });
-    })
-  })
+    });
+  });
 };
 
 const categoriesButtons = document.querySelectorAll(".category");
