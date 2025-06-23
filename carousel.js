@@ -12,6 +12,12 @@ const createProductsFromCarousel = () => {
   aData.map((product) => {
     const productElement = document.createElement("div");
     productElement.classList.add("product");
+    productElement.id = product.index;
+    productElement.className +=
+      " " +
+      product.category.toLowerCase().split(" ").join("") +
+      " " +
+      `${product.avaliable ? "" : "unavaliable"}`;
     productElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}" />
             <div class="info">
