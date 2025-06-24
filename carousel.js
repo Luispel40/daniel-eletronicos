@@ -38,6 +38,7 @@ const createProductsFromCarousel = () => {
   });
 };
 
+
 const nextSlide = () => {
   const products = document.querySelectorAll(".carousel .product");
   products.forEach((product) => {
@@ -48,7 +49,7 @@ const nextSlide = () => {
     setTimeout(() => {
       firstProduct.remove();
       carousel.appendChild(firstProduct);
-      firstProduct.style.width = "300px";
+      firstProduct.removeAttribute('style')
     }, 400);
   });
 };
@@ -61,7 +62,7 @@ const prevSlide = () => {
     lastProduct.remove();
     carousel.prepend(lastProduct);
     setTimeout(() => {
-      lastProduct.style.width = "300px";
+      lastProduct.removeAttribute('style')
     }, 10);
   });
 };
